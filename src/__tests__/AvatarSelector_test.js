@@ -25,20 +25,16 @@ describe("Should test images", () => {
 import React from 'react';
 import { shallow } from 'enzyme';
 import AvatarSelector from '../components/AvatarSelector';
-import esmeralda from '../images/esmeralda.png';
-import zac from '../images/zac.png';
-import morgana from '../images/morgana.png';
 
 it('should set img as zac', ()  => {
-    let currentPersona = 'Zac'; 
-    let wrapper = shallow(<AvatarSelector currentPersona={currentPersona} />);
+    const currentPersona = 'Zac'; 
+    const wrapper = shallow(<AvatarSelector currentPersona={currentPersona} />);
     expect(wrapper.find('img').html()).toContain("zac");
 })
 
 it('should set img as esmeralda', ()  => {
-    let currentPersona = 'Esmeralda'; 
-    let wrapper = shallow(<AvatarSelector currentPersona={currentPersona} />);
-    console.log(AvatarSelector.currentPersona);
+    const currentPersona = 'Esmeralda'; 
+    const wrapper = shallow(<AvatarSelector currentPersona={currentPersona} />);
     expect(wrapper.find('img').html()).toContain("esmeralda");
 })
 
