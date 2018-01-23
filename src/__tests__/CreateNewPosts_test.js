@@ -22,11 +22,12 @@ describe("Testing", () => {
   });
 
   it("Test submit", () => {
-    
     const author = "cilla";
     const onSubmit = jest.fn();
-    const wrapper = shallow(<CreateNewPost updatePosts={onSubmit} author={author} />);
-    wrapper.find('form').simulate('submit', { preventDefault: onSubmit });
+    const wrapper = shallow(
+      <CreateNewPost updatePosts={onSubmit} author={author} />
+    );
+    wrapper.find("form").simulate("submit", { preventDefault: onSubmit });
     expect(onSubmit).toBeCalled();
   });
 });
