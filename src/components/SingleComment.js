@@ -9,6 +9,7 @@ const SingleComment = ({ id, author, onClick, currentPersona, comment, date }) =
         danger
         onClick={() => onClick(id)}
         className="absolute pin-t pin-r my-3"
+        data-test="button"
       >
         x
       </Button>
