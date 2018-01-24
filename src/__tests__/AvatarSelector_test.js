@@ -19,3 +19,9 @@ it('should set img as morgana', ()  => {
     const wrapper = shallow(<AvatarSelector currentPersona={currentPersona} />);
     expect(wrapper.find('img').html()).toContain("morgana");
 })
+
+it('should not set img as zac if current person is morgana', () => {
+    const currentPersona = 'Morgana'; 
+    const wrapper = shallow(<AvatarSelector currentPersona={currentPersona} />);
+    expect(wrapper.find('img').html()).not.toContain("zac");
+});
