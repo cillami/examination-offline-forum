@@ -1,7 +1,11 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Comments from '../components/Comments';
 
-it('test', ()  => {
-    
-})
+
+
+it('test render comment list', ()  => {
+
+});
+
+
