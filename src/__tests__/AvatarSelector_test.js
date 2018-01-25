@@ -3,8 +3,8 @@ import { shallow } from 'enzyme';
 import AvatarSelector from '../components/AvatarSelector';
 
 it('should set img as zac', ()  => {
-    const currentPersona = 'Zac'; 
-    const wrapper = shallow(<AvatarSelector currentPersona={currentPersona} />);
+    // const currentPersona = 'Zac'; 
+    const wrapper = shallow(<AvatarSelector currentPersona="currentPersona" />);
     expect(wrapper.find('img').html()).toContain("zac");
 })
 

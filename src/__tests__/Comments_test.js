@@ -4,8 +4,18 @@ import Comments from '../components/Comments';
 
 
 
-it('test render comment list', ()  => {
+const fakeComment = [
+    {
+      id: "1",
+      title:
+        "My title",
+      comment: "My content",
+      currentPersona: "",
+      author: "",
+      date: "1999-12-31"
+    }
+  ];
+ 
 
-});
-
+  
 
