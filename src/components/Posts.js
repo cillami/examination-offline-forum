@@ -21,7 +21,7 @@ class Posts extends Component {
   removePost = (postId) => {
     api.removePost(postId);
     this.setPostFromLocalStorage();
-  }
+  };
 
   renderPostList = posts =>
     posts.map(post => (
