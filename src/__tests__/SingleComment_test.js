@@ -1,36 +1,53 @@
-import React from 'react';
-import { render, shallow, mount } from 'enzyme';
-import App from '../components/App';
-import SingleComment from '../components/SingleComment';
+import React from "react";
+import { render, mount } from "enzyme";
+import SingleComment from "../components/SingleComment";
 
-test('renders the app', () => {
-  render(<App />);
+// double this check test
+it("button should exist when author and currentpersona is same", () => {
+  const onClick = jest.fn();
+  const wrapper = render(
+    <SingleComment
+      id="5"
+      author="Evelina"
+      onClick={onClick}
+      currentPersona="Evelina"
+      comment="Comment"
+      date="2018-01-05"
+    />
+  );
+  expect(wrapper.find("button")).toBeTruthy();
 });
 
-// it('should set img as zac', ()  => {
+describe("test that onlick is being called with right id", () => {
+  it("onlick should have been called with the right id ", () => {
+    const onClick = jest.fn();
+    const wrapper = mount(
+      <SingleComment
+        id="5"
+        author="Evelina"
+        onClick={onClick}
+        currentPersona="Evelina"
+        comment="Comment"
+        date="2018-01-05"
+      />
+    );
+    wrapper.find("button").simulate("click");
+    expect(onClick).toHaveBeenCalledWith("5");
+  });
 
-//     // key should be id 
-
-//     // author should also be current persona 
-
-//     // classname should be comment 
-//     const currentPersona = 'Zac'; 
-//     const author = "evelinasundin";
-//     const id = "5";
-//     const comment = "tja"; 
-//     const date = "2017-06-12";
-//     const wrapper = shallow(<SingleComment currentPersona={currentPersona} author={author} id={id} date={date} comment={comment} />);
-//     expect(wrapper.find('img').html()).toContain("zac");
-// })
-
-// it('key should be id', () => {
-//     const currentPersona = 'Zac'; 
-//     const author = "evelinasundin";
-//     const id = "5";
-//     const comment = "tja"; 
-//     const date = "2017-06-12";
-//     const wrapper = mount(<SingleComment currentPersona={currentPersona} author={author} id={id} key={id} date={date} comment={comment} onClick={() => {}}  />);
-//     console.log(
-    
-//     expect(wrapper.find('key').html()).toEqual("5");
-// });
+  it("onlick should not be called when wrong id ", () => {
+    const onClick = jest.fn();
+    const wrapper = mount(
+      <SingleComment
+        id="7"
+        author="Evelina"
+        onClick={onClick}
+        currentPersona="Evelina"
+        comment="Comment"
+        date="2018-01-05"
+      />
+    );
+    wrapper.find("button").simulate("click");
+    expect(onClick).not.toHaveBeenCalledWith("8");
+  });
+});

@@ -2,15 +2,15 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import AvatarSelector from '../components/AvatarSelector';
 
+describe("test all avatars", () => {
+
 it('should set img as zac', ()  => {
-    // const currentPersona = 'Zac'; 
-    const wrapper = shallow(<AvatarSelector currentPersona="currentPersona" />);
+    const wrapper = shallow(<AvatarSelector currentPersona="Zac" />);
     expect(wrapper.find('img').html()).toContain("zac");
 })
 
 it('should set img as esmeralda', ()  => {
-    const currentPersona = 'Esmeralda'; 
-    const wrapper = shallow(<AvatarSelector currentPersona={currentPersona} />);
+    const wrapper = shallow(<AvatarSelector currentPersona="Esmeralda" />);
     expect(wrapper.find('img').html()).toContain("esmeralda");
 })
 
@@ -24,4 +24,6 @@ it('should not set img as zac if current person is morgana', () => {
     const currentPersona = 'Morgana'; 
     const wrapper = shallow(<AvatarSelector currentPersona={currentPersona} />);
     expect(wrapper.find('img').html()).not.toContain("zac");
+});
+
 });
