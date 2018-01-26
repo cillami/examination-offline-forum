@@ -3,6 +3,7 @@ import { shallow, mount } from "enzyme";
 import App from "../components/App";
 
 describe("App persona tests", () => {
+
   it("should render App with currentPersona", () => {
     const currentPerson = "Zac";
     const wrapper = shallow(<App />);
@@ -18,26 +19,38 @@ describe("App persona tests", () => {
     // Calls the function changePersona and sets value as Esmeralda
     wrapper.instance().changePersona({ target: { value: "Esmeralda" } });
     // Sets currentPersona from function which now is Esmeralda to state
-    const { currentPersona } = wrapper.state();
-    // Expect currentPersona in state to be Esmeralda 
-    expect(currentPersona).toBe("Esmeralda");
+
+    // const { currentPersona } = wrapper.state();
+
+    expect(wrapper.state().currentPersona).toBe("Esmeralda");
   });
 });
 
 describe("App page tests ", () => {
-  it('should change page', () => {
+  it("should change page", () => {
+    // const wrapper = mount(<App />);
+    // // Sets current page to homepage in state
+    // const { currentPage: homePage } = wrapper.state();
+    // expect(homePage).toBe("home");
+    // // Calls the function changePage
+    // wrapper.instance().changePage();
+    // // Sets currentpage in state
+    // const { currentPage } = wrapper.state();
+    // // After function is called currentPage should be bot
+    // expect(currentPage).toBe("bot");
+
     const wrapper = mount(<App />);
-    // Sets current page to homepage in state 
-    const { currentPage: homePage } = wrapper.state();
-    expect(homePage).toBe("home");
+
+    // Sets current page to homepage in state
+    wrapper.setState({ currenPage: "home" });
     // Calls the function changePage
     wrapper.instance().changePage();
-    // Sets currentpage in state 
-    const { currentPage } = wrapper.state();
-    // After function is called currentPage should be bot
-    expect(currentPage).toBe("bot");
+
+    expect(wrapper.state().currentPage).toBe("bot");
+
+    wrapper.setState({ currenPage: "bot" });
+    wrapper.instance().changePage();
+    expect(wrapper.state().currentPage).toBe("home");
   });
 
-  it.skip("should change page from bot to home", () => {
-  });
 });

@@ -25,4 +25,27 @@ describe("test remove comment", () => {
     wrapper.instance().removeComment("0");
     expect(fakeRemove).toHaveBeenCalledWith("0");
   });
+
+  it('', ()=>{
+
+    const fakeComment = [
+        {
+          comment: "My comment",
+          id: "0",
+          author: "Zac",
+          currentPersona: "Zac",
+          date: "1999-12-31"
+        }
+      ];
+      const wrapper = mount(
+        <Comments postId="0" currentPersona="Zac" author="Zac" />
+      );
+
+      wrapper.setState({comments:fakeComment});
+      wrapper.instance().renderCommentList(wrapper.state().comments);
+      expect(wrapper.state().comments).toBe(fakeComment)
+
+
+
+  })
 });
