@@ -1,22 +1,11 @@
-import React from 'react';
-import { shallow, mount } from 'enzyme';
-import Comments from '../components/Comments';
+import React from "react";
+import { shallow, mount } from "enzyme";
+import Comments from "../components/Comments";
+import * as api from "../api";
 
-it.skip('test', () => {
-    const fakeComment = [
-        {
-          id: "1",
-          title:
-            "My title",
-          comment: "My content",
-          currentPersona: "",
-          author: "",
-          date: "1999-12-31"
-        }
-      ];
-})
+describe("test remove comment", () => {
+  it("test", () => {
 
-it("test to render comments", () => {
     const fakeComment = [
       {
         comment: "My comment",
@@ -26,16 +15,14 @@ it("test to render comments", () => {
         date: "1999-12-31"
       }
     ];
-  
-    const wrapper = shallow(<Comments postId="1" currentPersona="Zac" author="Zac" />);
-    wrapper.setState({ comments: fakeComment });
-    wrapper.instance().renderCommentList(fakeComment);
-    const findMyComment = wrapper.find("article").first();
-    expect(findMyComment.text()).toContain("My comment");
+    const wrapper = shallow(
+      <Comments postId="0" currentPersona="Zac" author="Zac" />
+    );
+    localStorage.setItem("comments", fakeComment);
+   // const getComment = api.fetchAllCommments();
+    const fakeRemove = api.removeComment = jest.fn();
+    expect(localStorage.getItem).toHaveBeenCalled();
+    wrapper.instance().removeComment("0");
+    expect(fakeRemove).toHaveBeenCalledWith("0");
   });
-
-
-
-
-  
-
+});
