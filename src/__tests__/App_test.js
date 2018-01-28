@@ -19,25 +19,13 @@ describe("App persona tests", () => {
     // Calls the function changePersona and sets value as Esmeralda
     wrapper.instance().changePersona({ target: { value: "Esmeralda" } });
     // Sets currentPersona from function which now is Esmeralda to state
-
     // const { currentPersona } = wrapper.state();
-
     expect(wrapper.state().currentPersona).toBe("Esmeralda");
   });
 });
 
 describe("App page tests ", () => {
-  it("should change page", () => {
-    // const wrapper = mount(<App />);
-    // // Sets current page to homepage in state
-    // const { currentPage: homePage } = wrapper.state();
-    // expect(homePage).toBe("home");
-    // // Calls the function changePage
-    // wrapper.instance().changePage();
-    // // Sets currentpage in state
-    // const { currentPage } = wrapper.state();
-    // // After function is called currentPage should be bot
-    // expect(currentPage).toBe("bot");
+  it("should change page from home to bot and bot to home", () => {
 
     const wrapper = mount(<App />);
 
@@ -45,10 +33,11 @@ describe("App page tests ", () => {
     wrapper.setState({ currenPage: "home" });
     // Calls the function changePage
     wrapper.instance().changePage();
-
     expect(wrapper.state().currentPage).toBe("bot");
 
+    // Sets current page to bot in state
     wrapper.setState({ currenPage: "bot" });
+    // Calls the function changePage
     wrapper.instance().changePage();
     expect(wrapper.state().currentPage).toBe("home");
   });
