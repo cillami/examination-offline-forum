@@ -1,7 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
 import SinglePost from "../components/SinglePost";
-import Button from '../components/Button';
 
 // id: '565ddy34',
 // title: 'Everyday Hero: When This Pregnant Woman Couldn’t Find A Seat On A Train, This Man Decided To Stand On His In Solidarity',
@@ -18,9 +17,9 @@ describe("test", () => {
         id="0"
         title="My title"
         content="My content"
-        author="Cilla"
+        author="hen"
         date="1999-12-31"
-        currentPersona="Cilla"
+        currentPersona="hen"
       />
     );
     expect(
@@ -38,12 +37,12 @@ describe("test", () => {
         id="0"
         title="My title"
         content="My content"
-        author="Cilla"
+        author="hen"
         date="1999-12-31"
-        currentPersona="Cilla"
+        currentPersona="hen"
       />);
 
-      wrapper.find('button').simulate('click');
+      wrapper.find('button .absolute').simulate('click');
       expect(onClick).toHaveBeenCalledWith('0');
 
 })
