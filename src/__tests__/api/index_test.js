@@ -39,3 +39,19 @@ describe("post tests", () => {
     expect(localStorage.getItem("posts")).toContain("post2");
   });
 }); // end of description post tests
+
+describe("persona tests", () => {
+  afterEach(() => {
+    localStorage.clear();
+  });
+
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  it("should be able to return all persons in localstorage", () => {
+    const persons = [{ name: "Evelina" }, { name: "Cilla" }];
+    localStorage.setItem("personas", JSON.stringify(persons));
+    expect(api.fetchPersonas()).toEqual(persons);
+  });
+});
