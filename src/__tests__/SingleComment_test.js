@@ -2,45 +2,33 @@ import React from "react";
 import { mount } from "enzyme";
 import SingleComment from "../components/SingleComment";
 
-it("button should not exist when author and currentpersona is not the same", () => {
-  const onClick = jest.fn();
-  const sisterFromAnotherMister = "cilla";
+
+describe('button test', () => {
+
+  function renderButton(currentPersona, author){
+
+  const mockClick = jest.fn();
 
   const wrapper = mount(
     <SingleComment
       id="5"
-      author="Evelina"
-      onClick={onClick}
-      currentPersona="Evelina"
+      author={author}
+      onClick={mockClick}
+      currentPersona={currentPersona}
       comment="Comment"
       date="2018-01-05"
     />
   );
+  return wrapper
 
-  wrapper.setProps({currentPersona: sisterFromAnotherMister});
-  expect(wrapper.find("button").exists()).toBeFalsy();
- 
+}
+it("button should not exist when author and currentpersona is not the same", () => {
+  expect(renderButton("Evalina", "Cilla").find("button").exists()).toBeFalsy();
 });
 
-
-it("button should not exist when author and currentpersona is not the same", () => {
-  const onClick = jest.fn();
-  const sisterFromAnotherMister = "Evelina";
-
-  const wrapper = mount(
-    <SingleComment
-      id="5"
-      author="Evelina"
-      onClick={onClick}
-      currentPersona="Evelina"
-      comment="Comment"
-      date="2018-01-05"
-    />
-  );
-
-  wrapper.setProps({currentPersona: sisterFromAnotherMister});
-  expect(wrapper.find("button").exists()).toBeTruthy();
- 
+it("button should exist when author and currentpersona is the same", () =>{
+  expect(renderButton("Cilla", "Cilla").find("button").exists()).toBeTruthy();
+});
 });
 
 describe("test that onlick is being called with right id", () => {
