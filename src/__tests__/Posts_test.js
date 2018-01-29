@@ -1,6 +1,14 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import Posts from "../components/Posts";
+
+// beforeEach(() =>{
+//   localStorage.clear();
+// });
+
+// afterEach(() =>{
+//   localStorage.clear();
+// });
 
 describe("post", ()=>{
 
@@ -16,25 +24,36 @@ const fakePost = [
 ];
 
 it("test to add post and remove post", () => {
-  const wrapper = shallow(<Posts currentPersona="Morgana" author="Morgana" />);
+  const wrapper = mount(<Posts currentPersona="Morgana" author="Morgana" />);
   wrapper.setState({ posts: fakePost });
 
   expect(wrapper.state().posts[0].content).toContain("My post");
 
-  wrapper.instance().removePost("0");
-  // console.log(wrapper.state());
-  expect(wrapper.state().posts).toEqual([]);
+  // wrapper.instance().removePost("0");
+  // // console.log(wrapper.state());
+  // expect(wrapper.state().posts).toEqual([]);
 
   
 });
 it("test to add post and remove post", () => {
-  const wrapper = shallow(<Posts currentPersona="Morgana" author="Morgana" />);
-  wrapper.setState({ posts: fakePost });
 
-  expect(wrapper.state().posts[0].content).toContain("My post");
+  localStorage.setItem('posts', JSON.stringify(fakePost));
+
+  const wrapper = mount(<Posts currentPersona="Morgana" author="Morgana" />);
+// wrapper.setState({ posts: fakePost });
+
+// console.log(hej)
+//  expect(localStorage.getItem("posts", JSON.stringify(fakePost))
+// ).toEqual(fakePost);
+
+
+ console.log(wrapper.state().posts[0].id)
+// expect(wrapper.state().posts).toHaveLength(1);
 
   // wrapper.instance().removePost("7");
-  console.log(wrapper.state().posts[0].content);
+  // console.log(wrapper.state().posts[0].content);
   // expect(wrapper.state().posts[0].content).toContain("My post");
 });
 })
+
+
