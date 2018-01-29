@@ -35,8 +35,6 @@ describe("App page tests ", () => {
     wrapper.instance().changePage();
     expect(wrapper.state().currentPage).toBe("bot");
 
-<<<<<<< HEAD
-=======
     // Sets current page to bot in state
     wrapper.setState({ currenPage: "bot" });
     // Calls the function changePage
@@ -44,5 +42,4 @@ describe("App page tests ", () => {
     expect(wrapper.state().currentPage).toBe("home");
   });
 
->>>>>>> ef84e9e891a56a2447e651ad83b619efe76598d5
 });
