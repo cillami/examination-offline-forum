@@ -2,10 +2,11 @@ import React from "react";
 import { render, mount } from "enzyme";
 import SingleComment from "../components/SingleComment";
 
-// double this check test
-it("button should exist when author and currentpersona is same", () => {
+it("button should not exist when author and currentpersona is not the same", () => {
   const onClick = jest.fn();
-  const wrapper = render(
+  const sisterFromAnotherMister = "cilla";
+
+  const wrapper = mount(
     <SingleComment
       id="5"
       author="Evelina"
@@ -15,7 +16,10 @@ it("button should exist when author and currentpersona is same", () => {
       date="2018-01-05"
     />
   );
-  expect(wrapper.find("button")).toBeTruthy();
+
+  wrapper.setProps({currentPersona: sisterFromAnotherMister});
+  expect(wrapper.find("button").exists()).toBeFalsy();
+ 
 });
 
 describe("test that onlick is being called with right id", () => {
