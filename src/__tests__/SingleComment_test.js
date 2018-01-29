@@ -1,34 +1,32 @@
 import React from "react";
-import { mount } from "enzyme";
+import { render, mount } from "enzyme";
 import SingleComment from "../components/SingleComment";
 
 
 describe('button test', () => {
 
   function renderButton(currentPersona, author){
-
-  const mockClick = jest.fn();
-
+  const onClick = jest.fn();
   const wrapper = mount(
     <SingleComment
       id="5"
       author={author}
-      onClick={mockClick}
+      onClick={onClick}
       currentPersona={currentPersona}
       comment="Comment"
       date="2018-01-05"
     />
   );
   return wrapper
-
 }
 it("button should not exist when author and currentpersona is not the same", () => {
-  expect(renderButton("Evalina", "Cilla").find("button").exists()).toBeFalsy();
+  expect(renderButton("Evelina", "Cilla").find("button").exists()).toBeFalsy();
+
 });
 
 it("button should exist when author and currentpersona is the same", () =>{
   expect(renderButton("Cilla", "Cilla").find("button").exists()).toBeTruthy();
-});
+})
 });
 
 describe("test that onlick is being called with right id", () => {

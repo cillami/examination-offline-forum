@@ -1,51 +1,60 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
 import Comments from "../components/Comments";
-import * as api from "../api";
+import * as api from "../api/";
 
-describe("test remove comment", () => {
-  it("test", () => {
-
-    const fakeComment = [
-      {
-        comment: "My comment",
-        id: "0",
-        author: "Zac",
-        currentPersona: "Zac",
-        date: "1999-12-31"
-      }
-    ];
-    const wrapper = shallow(
-      <Comments postId="0" currentPersona="Zac" author="Zac" />
-    );
-    localStorage.setItem("comments", fakeComment);
-   // const getComment = api.fetchAllCommments();
-    const fakeRemove = api.removeComment = jest.fn();
-    expect(localStorage.getItem).toHaveBeenCalled();
-    wrapper.instance().removeComment("0");
-    expect(fakeRemove).toHaveBeenCalledWith("0");
+describe("test add and remove comment", () => {
+  
+  beforeEach(() =>{
+    localStorage.clear();
+  });
+  
+  afterEach(() =>{
+    localStorage.clear();
   });
 
-  it('', ()=>{
+  const fejk = [
+    {
+      comment: "My comment",
+      id: "tretton",
+      author: "Zac",
+      currentPersona: "Zac",
+      date: "1999-12-31",
+      postId: "the_hundreds"
+    }
+  ];
 
-    const fakeComment = [
-        {
-          comment: "My comment",
-          id: "0",
-          author: "Zac",
-          currentPersona: "Zac",
-          date: "1999-12-31"
-        }
-      ];
-      const wrapper = mount(
-        <Comments postId="0" currentPersona="Zac" author="Zac" />
-      );
+  it("Add a comment", () => {
+    const wrapper = mount(
+      <Comments postId="the_hundreds" currentPersona="Zac" author="Zac" />
+    );
+   // const shejk = JSON.stringify(fejk);
+    localStorage.setItem("comments", JSON.stringify(fejk));
 
-      wrapper.setState({comments:fakeComment});
-      wrapper.instance().renderCommentList(wrapper.state().comments);
-      expect(wrapper.state().comments).toBe(fakeComment)
+    wrapper.instance().setCommentsFromLocalStorage();
+   // expect(localStorage.getItem).toHaveBeenCalled();
+    expect(wrapper.state().comments).toHaveLength(1);
+  });
 
+  it("Test remove comments", () => {
+    const wrapper = mount(
+      <Comments postId="the_hundreds" currentPersona="Zac" author="Zac" />
+    );
 
+    const shejk = JSON.stringify(fejk);
+    localStorage.setItem("comments", shejk);
 
-  })
+    wrapper.instance().setCommentsFromLocalStorage();
+
+    const fetchEm = api.fetchAllCommments();
+    expect(fetchEm).toHaveLength(1);
+    // console.log(fetchEm)
+   // console.log(wrapper.state().comments)
+    expect(wrapper.state().comments).toHaveLength(1);
+
+    wrapper.instance().removeComment("tretton");
+    expect(wrapper.state().comments).toEqual([]);
+    // expect(wrapper.instance().removeComment).toHaveBeenCalled();
+  });
 });
+
