@@ -55,13 +55,13 @@ describe("persona tests", () => {
     expect(api.fetchPersonas()).toEqual(persons);
   });
 
-  it("should be able to return all persons in localstorage", () => {
-    const persons = [{ name: "Evelina" }, { name: "Cilla" }];
-    localStorage.setItem("personas", JSON.stringify(persons));
-    expect(api.fetchPersonas()).toEqual(persons);
-  });
+//   it("should be able to return all persons in localstorage", () => {
+//     const persons = [{ name: "Evelina" }, { name: "Cilla" }];
+//     localStorage.setItem("personas", JSON.stringify(persons));
+//     expect(api.fetchPersonas()).toEqual(persons);
+//   });
 
-it('should return empty array of personas from localStorage', () => {
+it('should return empty array if a person i local storage has not been set', () => {
     expect(api.fetchPersonas()).toHaveLength(0);
   });
 
