@@ -8,6 +8,10 @@ const AvatarSelector = ({ currentPersona }) => {
   let img = zac;
   if (currentPersona === 'Zac') {
     img = zac;
+<<<<<<< HEAD
+=======
+  //  console.log(img);
+>>>>>>> ef84e9e891a56a2447e651ad83b619efe76598d5
   }
   if (currentPersona === 'Esmeralda') {
     img = esmeralda;

@@ -1,21 +1,22 @@
 import React from "react";
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 import Posts from "../components/Posts";
 
-it("test to render posts", () => {
-  const fakePost = [
-    {
-      title: "My title",
-      content: "My post",
-      id: "0",
-      author: "",
-      date: "1999-12-31"
-    }
-  ];
+const fakePost = [
+  {
+    title: "My title",
+    content: "My post",
+    id: "0",
+    author: "Morgana",
+    date: "1999-12-31"
+  }
+];
 
-  const wrapper = shallow(<Posts currentPersona="" author="" />);
+it("test to add post and remove post", () => {
+  const wrapper = shallow(<Posts currentPersona="Morgana" author="Morgana" />);
   wrapper.setState({ posts: fakePost });
-  wrapper.instance().renderPostList(fakePost);
-  const findMyPost = wrapper.find("article").first();
-  expect(findMyPost.text()).toContain("My title");
+  expect(wrapper.state().posts[0].content).toContain("My post");
+  wrapper.instance().removePost("0");
+  // console.log(wrapper.state());
+  expect(wrapper.state().posts).toEqual([]);
 });
