@@ -1,5 +1,5 @@
 import React from "react";
-import { render, mount } from "enzyme";
+import { mount } from "enzyme";
 import SingleComment from "../components/SingleComment";
 
 it("button should not exist when author and currentpersona is not the same", () => {
@@ -19,6 +19,27 @@ it("button should not exist when author and currentpersona is not the same", () 
 
   wrapper.setProps({currentPersona: sisterFromAnotherMister});
   expect(wrapper.find("button").exists()).toBeFalsy();
+ 
+});
+
+
+it("button should not exist when author and currentpersona is not the same", () => {
+  const onClick = jest.fn();
+  const sisterFromAnotherMister = "Evelina";
+
+  const wrapper = mount(
+    <SingleComment
+      id="5"
+      author="Evelina"
+      onClick={onClick}
+      currentPersona="Evelina"
+      comment="Comment"
+      date="2018-01-05"
+    />
+  );
+
+  wrapper.setProps({currentPersona: sisterFromAnotherMister});
+  expect(wrapper.find("button").exists()).toBeTruthy();
  
 });
 

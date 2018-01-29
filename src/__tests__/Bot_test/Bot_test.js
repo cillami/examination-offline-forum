@@ -1,22 +1,22 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import Bot from '../../components/Bot/Bot';
 
-//   it('should render my message on screen', ()=> {
-//     const wrapper = shallow(<Bot />);
-//     wrapper.instance().onSubmit('Hello this is a massage');
-//     expect(wrapper.html()).toContain('Meko');
-//   });
 
-describe('testing the Bot component', ()=>{
-    const component = <Bot />;
+describe('should check if user message = message in state', () => {
 
-it('renders messages', ()=>{
-    const wrapper = shallow(component);
-    const bot = false;
-    const messages = [{message: 'hi', bot}, {message:'hello', bot}, {message:'see you!', bot}];
-    wrapper.setState({ messages });
-    expect(wrapper.find('Message').first().props().message).toContain(messages[0].message);
+it('should check if messages match', () => {
+    const wrapper = mount(<Bot />);
+    const coolmessage = "Evelina";
+    wrapper.instance().onSubmit(coolmessage);
+    expect(wrapper.state().messages[0]).toEqual({message: 'Evelina', bot: false});
+});
+
+it('should check if messages dont match ', () => {
+    const wrapper = mount(<Bot />);
+    const coolmessage = "Cilla";
+    wrapper.instance().onSubmit(coolmessage);
+    expect(wrapper.state().messages[0]).not.toEqual({message: 'Evelina', bot: false});
 });
 
 });
