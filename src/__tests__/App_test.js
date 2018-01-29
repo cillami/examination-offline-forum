@@ -38,6 +38,4 @@ describe("App page tests ", () => {
     expect(currentPage).toBe("bot");
   });
 
-  it.skip("should change page from bot to home", () => {
-  });
 });
