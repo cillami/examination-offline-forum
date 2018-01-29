@@ -36,6 +36,7 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
       "!src/registerServiceWorker.js",
+      "!src/localStorageMock.js",
       "!src/setupTests.js",
       "!src/fakePosts.js",
       "!src/index.js"
