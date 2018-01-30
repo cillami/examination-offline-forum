@@ -102,7 +102,8 @@ it('should return empty array if a person i local storage has not been set', () 
 
 });
 
-<<<<<<< HEAD
+
+
 describe('Test bot', () => {
 
   jest.useFakeTimers();
@@ -123,7 +124,3 @@ describe('Test bot', () => {
     )
   });
 });
-=======
-
-
->>>>>>> e15e17dc43dda2b3c140ee1e7713b1ff00509715
