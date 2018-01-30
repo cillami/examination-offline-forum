@@ -1,4 +1,6 @@
 import * as api from "../../api/";
+//Instructs Jest to use fake versions of the standard timer functions
+jest.useFakeTimers();
 
 describe("post tests", () => {
   afterEach(() => {
@@ -65,4 +67,25 @@ it('should return empty array if a person i local storage has not been set', () 
   });
 
 
+});
+
+describe('Test bot', () => {
+
+  jest.useFakeTimers();
+
+  it('Promise should return an object with bot message', () => {
+    // Get a random botReply
+    const botReply = api.botReply();
+    // Fast-forward until all timers have been executed
+    jest.runAllTimers();
+    // make sure to add a return statement
+    return expect(botReply).resolves.toEqual(
+      // matches any received object that recursively matches the expected properties
+        expect.objectContaining({
+        bot: true,    
+        // Instead of literal property values in the expected object, you can use matchers, expect.any()
+        message: expect.any(String)
+      })
+    )
+  });
 });

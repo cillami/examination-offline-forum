@@ -24,7 +24,7 @@ describe("test add and remove comment", () => {
     },
     {
       comment: "My comment",
-      id: "hej",
+      id: "femtio",
       author: "Zac",
       currentPersona: "Zac",
       date: "1999-12-31",
@@ -61,7 +61,7 @@ describe("test add and remove comment", () => {
    // console.log(wrapper.state().comments)
     expect(wrapper.state().comments).toHaveLength(2);
 
-    wrapper.instance().removeComment("hej");
+    wrapper.instance().removeComment();
     console.log(wrapper.state().comments)
   //  expect(wrapper.state().comments).toEqual([]);
     // expect(wrapper.instance().removeComment).toHaveBeenCalled();
