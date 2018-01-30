@@ -21,7 +21,16 @@ describe("test add and remove comment", () => {
       currentPersona: "Zac",
       date: "1999-12-31",
       postId: "the_hundreds"
+    },
+    {
+      comment: "My comment",
+      id: "hej",
+      author: "Zac",
+      currentPersona: "Zac",
+      date: "1999-12-31",
+      postId: "the_hundreds"
     }
+
   ];
 
   it("Add a comment", () => {
@@ -33,7 +42,7 @@ describe("test add and remove comment", () => {
 
     wrapper.instance().setCommentsFromLocalStorage();
    // expect(localStorage.getItem).toHaveBeenCalled();
-    expect(wrapper.state().comments).toHaveLength(1);
+    expect(wrapper.state().comments).toHaveLength(2);
   });
 
   it("Test remove comments", () => {
@@ -41,19 +50,20 @@ describe("test add and remove comment", () => {
       <Comments postId="the_hundreds" currentPersona="Zac" author="Zac" />
     );
 
-    const shejk = JSON.stringify(fejk);
-    localStorage.setItem("comments", shejk);
+    // const shejk = JSON.stringify(fejk);
+    localStorage.setItem("comments", JSON.stringify(fejk));
 
     wrapper.instance().setCommentsFromLocalStorage();
 
     const fetchEm = api.fetchAllCommments();
-    expect(fetchEm).toHaveLength(1);
-    // console.log(fetchEm)
-   // console.log(wrapper.state().comments)
-    expect(wrapper.state().comments).toHaveLength(1);
+    expect(fetchEm).toHaveLength(2);
 
-    wrapper.instance().removeComment("tretton");
-    expect(wrapper.state().comments).toEqual([]);
+   // console.log(wrapper.state().comments)
+    expect(wrapper.state().comments).toHaveLength(2);
+
+    wrapper.instance().removeComment("hej");
+    console.log(wrapper.state().comments)
+  //  expect(wrapper.state().comments).toEqual([]);
     // expect(wrapper.instance().removeComment).toHaveBeenCalled();
   });
 });
