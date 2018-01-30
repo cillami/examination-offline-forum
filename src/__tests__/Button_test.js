@@ -11,4 +11,4 @@ it("test button", () => {
     </Button>
   );
   expect(wrapper.find("button").hasClass("bg-red-dark")).toEqual(true);
-});
+}); 

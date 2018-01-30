@@ -8,6 +8,7 @@
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
     "enzyme-to-json": "3.3.0",
+    "gh-pages": "^1.1.0",
     "marked": "0.3.9",
     "prop-types": "15.6.0",
     "react": "^16.2.0",
@@ -17,11 +18,14 @@
     "react-test-renderer": "16.2.0"
   },
   "scripts": {
-    "cypress:open": "cypress open",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test:coverage": "npm test -- --coverage",
+    "eject": "react-scripts eject",
+    "cypress:open": "cypress open"
   },
   "devDependencies": {
     "cypress": "^1.4.1",
@@ -43,11 +47,12 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
+        "branches": 70,
+        "functions": 70,
+        "lines": 70,
         "statements": 0
       }
     }
-  }
+  },
+  "homepage": "https://cillami.github.io/examination-offline-forum"
 }
