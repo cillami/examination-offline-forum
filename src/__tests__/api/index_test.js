@@ -4,7 +4,6 @@ describe("post tests", () => {
   afterEach(() => {
     localStorage.clear();
   });
-
   beforeEach(() => {
     localStorage.clear();
   });
