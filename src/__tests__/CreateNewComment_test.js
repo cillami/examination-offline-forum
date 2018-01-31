@@ -1,7 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
 import CreateNewComment from "../components/CreateNewComment";
-import * as api from "../api/";
 
   it("Add comment", () => {
     const faker = jest.fn();
