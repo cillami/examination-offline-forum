@@ -1,10 +1,4 @@
 import * as api from "../../api/";
-<<<<<<< HEAD
-
-=======
-//Instructs Jest to use fake versions of the standard timer functions
-jest.useFakeTimers();
->>>>>>> 4220c769ba273d5651c472a9467af513f45175ba
 describe("post tests", () => {
   afterEach(() => {
     localStorage.clear();
@@ -101,16 +95,11 @@ describe("persona tests", () => {
   });
 
 
-<<<<<<< HEAD
-console.log(api.storeCurrentPersona("Morgana"))
-
-=======
   it("should be able to return current person in local storage", () => {
     const currentPerson = "Evelina";
     localStorage.setItem("currentPersona", JSON.stringify(currentPerson));
     expect(api.fetchCurrentPersona()).toEqual("Cilla");
   });
->>>>>>> 4220c769ba273d5651c472a9467af513f45175ba
 
 
   it("should return empty array if a person i local storage has not been set", () => {
