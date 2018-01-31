@@ -4,12 +4,11 @@ import Comments from "../components/Comments";
 import * as api from "../api/";
 
 describe("test add and remove comment", () => {
-  
-  beforeEach(() =>{
+  beforeEach(() => {
     localStorage.clear();
   });
-  
-  afterEach(() =>{
+
+  afterEach(() => {
     localStorage.clear();
   });
 
@@ -30,18 +29,17 @@ describe("test add and remove comment", () => {
       date: "1999-12-31",
       postId: "the_hundreds"
     }
-
   ];
 
   it("Add a comment", () => {
     const wrapper = mount(
       <Comments postId="the_hundreds" currentPersona="Zac" author="Zac" />
     );
-   // const shejk = JSON.stringify(fejk);
+    // const shejk = JSON.stringify(fejk);
     localStorage.setItem("comments", JSON.stringify(fejk));
 
     wrapper.instance().setCommentsFromLocalStorage();
-   // expect(localStorage.getItem).toHaveBeenCalled();
+    // expect(localStorage.getItem).toHaveBeenCalled();
     expect(wrapper.state().comments).toHaveLength(2);
   });
 
@@ -50,21 +48,19 @@ describe("test add and remove comment", () => {
       <Comments postId="the_hundreds" currentPersona="Zac" author="Zac" />
     );
 
-    // const shejk = JSON.stringify(fejk);
     localStorage.setItem("comments", JSON.stringify(fejk));
 
     wrapper.instance().setCommentsFromLocalStorage();
 
     const fetchEm = api.fetchAllCommments();
     expect(fetchEm).toHaveLength(2);
+    console.log(fetchEm)
 
-   // console.log(wrapper.state().comments)
+    console.log(wrapper.state().comments);
     expect(wrapper.state().comments).toHaveLength(2);
-
-    wrapper.instance().removeComment();
-    console.log(wrapper.state().comments)
-  //  expect(wrapper.state().comments).toEqual([]);
-    // expect(wrapper.instance().removeComment).toHaveBeenCalled();
+    wrapper.instance().removeComment("the_hundreds");
+    console.log(wrapper.state().comments);
+    // all the comments disappears
+    expect(wrapper.state().comments).toEqual([]);
   });
 });
-

@@ -72,12 +72,12 @@ describe("comments tests", () => {
       expect(api.fetchAllCommments()).toEqual(fakeComments);
     });
 
-    it("should be able to remove posts from localstorage", () => {
+    it("should be able to remove comment from localstorage", () => {
         localStorage.setItem("comments", JSON.stringify(fakeComments));
-        // removes first post in array
-        api.removePost("5");
-        // the only post left is the second post
-        expect(localStorage.getItem("comments")).toContain("This is a comment");
+        // removes first comments in array
+        const storedComments = localStorage.getItem("comments");
+        api.removeComment("1");
+     
       });
   }); // end of description comments tests
 
@@ -104,23 +104,3 @@ it('should return empty array if a person i local storage has not been set', () 
 
 
 
-describe('Test bot', () => {
-
-  jest.useFakeTimers();
-
-  it('Promise should return an object with bot message', () => {
-    // Get a random botReply
-    const botReply = api.botReply();
-    // Fast-forward until all timers have been executed
-    jest.runAllTimers();
-    // make sure to add a return statement
-    return expect(botReply).resolves.toEqual(
-      // matches any received object that recursively matches the expected properties
-        expect.objectContaining({
-        bot: true,    
-        // Instead of literal property values in the expected object, you can use matchers, expect.any()
-        message: expect.any(String)
-      })
-    )
-  });
-});
