@@ -11,7 +11,7 @@ describe("test add and remove comment", () => {
   afterEach(() => {
     localStorage.clear();
   });
-
+  
   const fejk = [
     {
       comment: "My comment",
@@ -49,7 +49,6 @@ describe("test add and remove comment", () => {
     );
 
     localStorage.setItem("comments", JSON.stringify(fejk));
-
     wrapper.instance().setCommentsFromLocalStorage();
 
     const fetchEm = api.fetchAllCommments();
