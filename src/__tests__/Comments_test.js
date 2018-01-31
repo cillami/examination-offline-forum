@@ -43,7 +43,7 @@ describe("test add and remove comment", () => {
     // console.log(fetchEm)
 
     expect(wrapper.state().comments).toHaveLength(1);
-    wrapper.instance().removeComment("Haru leg eller id?");
+    wrapper.instance().removeComment("Haru pass eller id?");
     expect(wrapper.state().comments).toEqual([]);
   });
 
