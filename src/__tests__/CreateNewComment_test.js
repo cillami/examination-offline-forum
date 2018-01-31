@@ -3,15 +3,11 @@ import { shallow } from "enzyme";
 import CreateNewComment from "../components/CreateNewComment";
 import * as api from "../api/";
 
-  it("Testing textarea and state", () => {
+  it("Add comment", () => {
     const faker = jest.fn();
     const commentInput = { target: { name: "comment", value: "My comment" }};
     const wrapper = shallow(
-      <CreateNewComment
-        updateComments={faker}
-        author="bruce lee"
-        postId="0"
-      />
+      <CreateNewComment updateComments={faker} author="bruce lee" postId="0" />
     );
     wrapper.find('textarea[name="comment"]').simulate("change", commentInput);
    // expect(wrapper.find({ target: commentInput })).toBeTruthy();
@@ -22,11 +18,7 @@ import * as api from "../api/";
   it("Test submit", () => {
     const faker = jest.fn();
     const wrapper = shallow(
-      <CreateNewComment
-        updateComments={faker}
-        author="Rakim"
-        postId="0"
-      />
+      <CreateNewComment updateComments={faker} author="Rakim" postId="0" />
     );
     wrapper.find("form").simulate("submit", { preventDefault: faker });
     expect(faker).toBeCalled();
