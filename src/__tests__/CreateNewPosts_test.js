@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 import CreateNewPost from "../components/CreateNewPost";
 
 describe("Testing", () => {
-  it("Test input and textarea", () => {
+  it("Test add post", () => {
     const faker = jest.fn();
     const title = { name: "title", value: "My title" };
     const content = { name: "content", value: "My content" };

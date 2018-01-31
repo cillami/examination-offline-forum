@@ -1,5 +1,3 @@
-/* disable eslint */
-
 describe("App.js", () => {
   context("test offline-forum", () => {
     beforeEach(() => {
