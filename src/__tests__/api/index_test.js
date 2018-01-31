@@ -72,7 +72,7 @@ describe("comments tests", () => {
     expect(api.fetchAllCommments()).toEqual(fakeComments);
   });
 
-  it("should be able to remove comments from localstorage", () => {
+  it.skip("should be able to remove comments from localstorage", () => {
     localStorage.setItem("comments", JSON.stringify(fakeComments));
     // removes first comment in array
     api.removeComment("3");
@@ -89,7 +89,7 @@ describe("persona tests", () => {
   beforeEach(() => {
     localStorage.clear();
   });
-
+ 
   it("should be able to return all persons in localstorage", () => {
     const persons = [{ name: "Evelina" }, { name: "Cilla" }];
     localStorage.setItem("personas", JSON.stringify(persons));
