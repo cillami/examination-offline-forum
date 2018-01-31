@@ -1,5 +1,5 @@
 import React from "react";
-import { render, mount } from "enzyme";
+import { mount } from "enzyme";
 import SingleComment from "../components/SingleComment";
 
 describe('button test', () => {
@@ -8,12 +8,7 @@ describe('button test', () => {
   const onClick = jest.fn();
   const wrapper = mount(
     <SingleComment
-      id="5"
-      author={author}
-      onClick={onClick}
-      currentPersona={currentPersona}
-      comment="Comment"
-      date="2018-01-05"
+      id="5" author={author} onClick={onClick} currentPersona={currentPersona} comment="Comment" date="2018-01-05"
     />
   );
   return wrapper
@@ -32,13 +27,7 @@ describe("test that onlick is being called with right id", () => {
     const onClick = jest.fn();
     const wrapper = mount(
       <SingleComment
-        id="5"
-        author="Evelina"
-        onClick={onClick}
-        currentPersona="Evelina"
-        comment="Comment"
-        date="2018-01-05"
-      />
+        id="5" author="Evelina" onClick={onClick} currentPersona="Evelina" comment="Comment" date="2018-01-05" />
     );
     wrapper.find("button").simulate("click");
     expect(onClick).toHaveBeenCalledWith("5");
@@ -48,12 +37,7 @@ describe("test that onlick is being called with right id", () => {
     const onClick = jest.fn();
     const wrapper = mount(
       <SingleComment
-        id="7"
-        author="Evelina"
-        onClick={onClick}
-        currentPersona="Evelina"
-        comment="Comment"
-        date="2018-01-05"
+        id="7" author="Evelina" onClick={onClick} currentPersona="Evelina" comment="Comment" date="2018-01-05"
       />
     );
     wrapper.find("button").simulate("click");

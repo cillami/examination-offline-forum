@@ -1,60 +1,33 @@
 import React from "react";
 import { shallow } from "enzyme";
 import CreateNewComment from "../components/CreateNewComment";
+import * as api from "../api/";
 
-  it("Test onChange when using input and textarea", () => {
-    const onChange = jest.fn();
-    const postId = "0";
-    const commentInput = { name: "comment", value: "feel my fist of fury" };
+  it("Testing textarea and state", () => {
+    const faker = jest.fn();
+    const commentInput = { target: { name: "comment", value: "My comment" }};
     const wrapper = shallow(
       <CreateNewComment
-        updateComments={onChange}
+        updateComments={faker}
         author="bruce lee"
-        postId={postId}
+        postId="0"
       />
     );
-
-    wrapper.find('textarea[name="comment"]').simulate("change", { target: commentInput, postId });
-    expect(wrapper.find({ target: commentInput, postId })).toBeTruthy();
+    wrapper.find('textarea[name="comment"]').simulate("change", commentInput);
+   // expect(wrapper.find({ target: commentInput })).toBeTruthy();
+    expect(wrapper.state().comment).toContain("My comment");
   });
 
+
   it("Test submit", () => {
-    const onSubmit = jest.fn();
+    const faker = jest.fn();
     const wrapper = shallow(
       <CreateNewComment
-        updateComments={onSubmit}
+        updateComments={faker}
         author="Rakim"
         postId="0"
       />
     );
-    wrapper.find("form").simulate("submit", { preventDefault: onSubmit });
-    expect(onSubmit).toBeCalled();
-  });
-
-  it("Test submit", () => {
-
-    const fejk = [
-      {
-        comment: "My comment",
-        id: "tretton",
-        author: "Zac",
-        currentPersona: "Zac",
-        date: "1999-12-31",
-        postId: "the_hundreds"
-      }];
-
-    const onSubmit = jest.fn();
-    const wrapper = shallow(
-      <CreateNewComment
-        updateComments={onSubmit}
-        author="Rakim"
-        postId="0"
-      />
-    );
-
-    wrapper.setState({ comment: fejk });
-    expect(wrapper.state().comment[0].comment).toContain("My comment");
-    console.log(wrapper.state().comment[0].comment)
-    // wrapper.find("form").simulate("submit", { preventDefault: onSubmit });
-    // expect(onSubmit).toBeCalled();
+    wrapper.find("form").simulate("submit", { preventDefault: faker });
+    expect(faker).toBeCalled();
   });

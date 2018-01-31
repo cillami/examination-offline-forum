@@ -74,10 +74,10 @@ describe("comments tests", () => {
 
   it("should be able to remove comments from localstorage", () => {
     localStorage.setItem("comments", JSON.stringify(fakeComments));
-    // removes first post in array
-    api.removePost("5");
-    // the only post left is the second post
-    expect(localStorage.getItem("comments")).toContain("This is a comment");
+    // removes first comment in array
+    api.removeComment("3");
+    // the only comment left is the second post
+    expect(localStorage.getItem("comments")).toHaveLength(1);
   });
 }); // end of description comments tests
 

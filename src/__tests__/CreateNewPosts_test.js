@@ -1,32 +1,29 @@
 import React from "react";
-import { shallow, mount, render } from "enzyme";
+import { shallow } from "enzyme";
 import CreateNewPost from "../components/CreateNewPost";
 
 describe("Testing", () => {
-  it("Test onChange when using input and textarea", () => {
-    const author = "cilla";
-    const onChange = jest.fn();
+  it("Test input and textarea", () => {
+    const faker = jest.fn();
     const title = { name: "title", value: "My title" };
     const content = { name: "content", value: "My content" };
     const wrapper = shallow(
-      <CreateNewPost updatePosts={onChange} author={author} />
+      <CreateNewPost updatePosts={faker} author="" />
     );
 
     wrapper.find('input[name="title"]').simulate("change", { target: title });
-    wrapper
-      .find('textarea[name="content"]')
-      .simulate("change", { target: content });
+    wrapper.find('textarea[name="content"]').simulate("change", { target: content });
 
-    expect(wrapper.find({ target: title })).toBeTruthy();
-    expect(wrapper.find({ target: content })).toBeTruthy();
+    expect(wrapper.state().title).toContain("My title");
+    expect(wrapper.state().content).toContain("My content");
   });
 
   it("Test submit", () => {
-    const onSubmit = jest.fn();
+    const faker = jest.fn();
     const wrapper = shallow(
-      <CreateNewPost updatePosts={onSubmit} author="Hayao Miyazaki" />
+      <CreateNewPost updatePosts={faker} author="Hayao Miyazaki" />
     );
     wrapper.find("form").simulate("submit", { preventDefault: () => {} });
-    expect(onSubmit).toBeCalled();
+    expect(faker).toBeCalled();
   });
 });
