@@ -10,26 +10,28 @@ describe("App.js", () => {
     it("test articles length", () => {
       cy.get("article").should("have.length", 3);
     });
+    
     it("test form, create new post", () => {
-      cy.get("#title").type("Hallo");
-      cy.get("#content").type("test");
+      cy.get("#title").type("Title new post");
+      cy.get("#content").type("Content new post");
       cy
         .get("form")
         .first()
-        .wait(1000)
+        .wait(4000)
         .submit();
       cy
         .get("article")
         .first()
-        .should("contain", "Hallo");
-      cy.get("#comment").type("haa");
+        .should("contain", "Title new post");
+      cy.get("#comment").type("This is my comment");
       cy
         .get("article")
         .first()
-        .parent()
+        .next()
         .find("form")
-        .wait(1000)
-        .submit();
+        .wait(4000)
+        .submit()
+        .wait(6000)
       cy.get("article").should("have.length", 4);
     });
 
@@ -41,18 +43,18 @@ describe("App.js", () => {
       cy
         .get("input")
         .first()
-        .type("Hej jesper");
+        .type("What time is it?");
       cy.get("form").submit();
       cy
         .get('[data-test="button"]')
-        .wait(1000)
+        .wait(4000)
         .click();
     });
 
     it("change page to home", () => {
       cy
         .get('[data-test="button"]')
-        .wait(1000)
+        .wait(4000)
         .click();
     });
 

@@ -11,7 +11,7 @@ describe("test add and remove comment", () => {
   afterEach(() => {
     localStorage.clear();
   });
-  
+
   const fejk = [
     {
       comment: "My comment",

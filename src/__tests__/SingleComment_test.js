@@ -2,7 +2,6 @@ import React from "react";
 import { render, mount } from "enzyme";
 import SingleComment from "../components/SingleComment";
 
-
 describe('button test', () => {
 
   function renderButton(currentPersona, author){
@@ -21,7 +20,6 @@ describe('button test', () => {
 }
 it("button should not exist when author and currentpersona is not the same", () => {
   expect(renderButton("Evelina", "Cilla").find("button").exists()).toBeFalsy();
-
 });
 
 it("button should exist when author and currentpersona is the same", () =>{

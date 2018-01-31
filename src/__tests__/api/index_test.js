@@ -1,6 +1,4 @@
 import * as api from "../../api/";
-//Instructs Jest to use fake versions of the standard timer functions
-jest.useFakeTimers();
 
 describe("post tests", () => {
   afterEach(() => {
@@ -101,6 +99,8 @@ it('should return empty array if a person i local storage has not been set', () 
   });
 
 });
+
+console.log(api.storeCurrentPersona("Morgana"))
 
 
 

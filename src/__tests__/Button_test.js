@@ -1,6 +1,7 @@
 import React from "react";
-import { mount } from "enzyme";
+import { mount , render, shallow} from "enzyme";
 import Button from "../components/Button";
+import toJSON from 'enzyme-to-json';
 
 it("test button", () => {
   const fakeClick = jest.fn();
@@ -12,3 +13,5 @@ it("test button", () => {
   );
   expect(wrapper.find("button").hasClass("bg-red-dark")).toEqual(true);
 }); 
+
+
