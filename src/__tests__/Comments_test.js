@@ -42,10 +42,8 @@ describe("test add and remove comment", () => {
     // expect(fetchEm).toHaveLength(1);
     // console.log(fetchEm)
 
-    wrapper.instance().setCommentsFromLocalStorage();
-    // console.log(wrapper.state().comments)
     expect(wrapper.state().comments).toHaveLength(1);
-    wrapper.instance().removeComment("1");
+    wrapper.instance().removeComment("Haru leg eller id?");
     expect(wrapper.state().comments).toEqual([]);
   });
 
