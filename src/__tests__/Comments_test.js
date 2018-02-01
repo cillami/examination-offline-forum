@@ -24,11 +24,13 @@ describe("test add and remove comment", () => {
       <Comments postId="the_hundreds" currentPersona="Zac" author="Zac" />
     );
     localStorage.setItem("comments", JSON.stringify(fejkComment));
+   
     wrapper.instance().setCommentsFromLocalStorage();
     expect(localStorage.getItem).toHaveBeenCalled();
 
     const fetchEm = api.fetchAllCommments();
     expect(fetchEm).toHaveLength(1);
+
     expect(wrapper.state().comments).toHaveLength(1);
   });
 

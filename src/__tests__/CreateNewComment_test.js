@@ -15,12 +15,9 @@ it("Add comment", () => {
 
 it("Test submit", () => {
   const faker = jest.fn();
-  const commentInput = { target: { name: "comment", value: "My comment" } };
   const wrapper = shallow(
     <CreateNewComment updateComments={faker} author="Rakim" postId="0" />
   );
-  wrapper.find('textarea[name="comment"]').simulate("change", commentInput);
-  // expect(wrapper.state().comment).toContain("My comment");
-
-  expect(faker).toBeCalled();
+  wrapper.find("form").simulate("submit", { preventDefault: () => {} });
+  expect(faker).toHaveBeenCalledTimes(1);
 });
