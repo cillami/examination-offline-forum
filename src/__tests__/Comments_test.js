@@ -29,6 +29,8 @@ describe("test add and remove comment", () => {
     expect(wrapper.state().comments).toHaveLength(1);
   });
 
+
+  
   it("Test remove a comment", () => {
     const wrapper = mount(
       <Comments postId="the_hundreds" currentPersona="Zac" author="Zac" />
