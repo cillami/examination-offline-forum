@@ -45,6 +45,6 @@ describe("test add and remove comment", () => {
     
     api.removeComment = jest.fn();
     wrapper.instance().removeComment();
-    expect(api.removeComment).toBeCalled();
+    expect(api.removeComment).toHaveBeenCalledTimes(1);
   });
 });
