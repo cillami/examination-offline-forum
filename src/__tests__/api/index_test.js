@@ -77,12 +77,13 @@ describe("comments tests", () => {
     expect(api.fetchAllCommments()).toEqual(fakeComments);
   });
 
-  it.skip("should be able to remove comments from localstorage", () => {
+  it("should be able to remove comments from localstorage", () => {
     localStorage.setItem("comments", JSON.stringify(fakeComments));
-    // removes first comment in array
-    api.removeComment("3");
-    // the only comment left is the second post
-    expect(localStorage.getItem("comments")).toHaveLength(1);
+    // console.log(localStorage.getItem("comments"));
+    api.removeComment();
+    // console.log(localStorage.getItem("comments"));
+    // after removecomment function is called its being removed.
+    expect(localStorage.getItem("comments")).toEqual("[]");
   });
 }); // end of description comments tests
 

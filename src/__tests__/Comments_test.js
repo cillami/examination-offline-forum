@@ -1,5 +1,5 @@
 import React from "react";
-import { mount } from "enzyme";
+import { mount, shallow} from "enzyme";
 import Comments from "../components/Comments";
 import * as api from "../api/";
 
@@ -49,4 +49,13 @@ describe("test add and remove comment", () => {
     wrapper.instance().removeComment();
     expect(api.removeComment).toHaveBeenCalledTimes(1);
   });
+  
+  it("Render My comment", () => {
+  const wrapper = mount(
+    <Comments postId="the_hundreds" currentPersona="Zac" author="Zac" />
+  );
+  wrapper.setState({ comments: fejkComment });
+  wrapper.instance().renderCommentList(fejkComment);
+  expect(wrapper.find('SingleComment').html()).toContain("My comment");
+});
 });

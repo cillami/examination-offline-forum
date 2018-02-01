@@ -31,4 +31,13 @@ it("test to remove post", () => {
   expect(wrapper.state().posts).toEqual([]);
 
 });
+
+it("Render My post", () => {
+  const wrapper = mount(
+    <Posts postId="the_hundreds" currentPersona="Zac" author="Zac" />
+  );
+  wrapper.setState({ posts: fakePost });
+  wrapper.instance().renderPostList(fakePost);
+  expect(wrapper.find('SinglePost').html()).toContain("My post");
+});
 });
