@@ -29,14 +29,14 @@ describe("App.js", () => {
         .find("form")
         .wait(4000)
         .submit()
-        .wait(6000)
+        .wait(3000)
       cy.get("article").should("have.length", 4);
     });
 
     it("change page to bot", () => {
       cy
         .get('[data-test="button"]')
-        .wait(1000)
+        .wait(3000)
         .click();
       cy
         .get("input")

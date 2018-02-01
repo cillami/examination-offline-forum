@@ -15,10 +15,17 @@ import CreateNewComment from "../components/CreateNewComment";
 
 
   it("Test submit", () => {
+    
     const faker = jest.fn();
+    const commentInput = { target: { name: "comment", value: "My comment" }};
     const wrapper = shallow(
       <CreateNewComment updateComments={faker} author="Rakim" postId="0" />
     );
+    wrapper.find('textarea[name="comment"]').simulate("change", commentInput);
+    expect(wrapper.state().comment).toContain("My comment");
+  
     wrapper.find("form").simulate("submit", { preventDefault: faker });
-    expect(faker).toBeCalled();
+   expect(faker).toBeCalled();
+
+     console.log(wrapper.state().comment[0]);
   });

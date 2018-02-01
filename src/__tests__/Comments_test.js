@@ -1,7 +1,6 @@
 import React from "react";
-import { shallow, mount } from "enzyme";
+import { mount } from "enzyme";
 import Comments from "../components/Comments";
-import * as api from "../api/";
 
 describe("test add and remove comment", () => {
 

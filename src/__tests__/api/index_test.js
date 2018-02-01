@@ -32,6 +32,11 @@ describe("post tests", () => {
     expect(api.fetchAllPosts()).toEqual(fakePosts);
   });
 
+  it("should return [] from local storage", () => {
+    localStorage.setItem("postsman", JSON.stringify(fakePosts));
+    expect(api.fetchAllPosts()).toEqual([]);
+  });
+
   it("should be able to remove posts from localstorage", () => {
     localStorage.setItem("posts", JSON.stringify(fakePosts));
     // removes first post in array
@@ -111,4 +116,9 @@ describe("persona tests", () => {
   it("should return empty array if a person i local storage has not been set", () => {
     expect(api.fetchPersonas()).toHaveLength(0);
   });
+
+  it.skip("botReply", () => {
+    console.log(api.botReply());
+  });
+
 });
